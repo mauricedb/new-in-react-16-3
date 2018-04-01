@@ -29,9 +29,4 @@ export class TimeProvider extends Component {
   }
 }
 
-export class TimeConsumer extends Component {
-  render() {
-    const { children } = this.props;
-    return <TimeContext.Consumer>{now => children(now)}</TimeContext.Consumer>;
-  }
-}
+export const TimeConsumer = TimeContext.Consumer;
