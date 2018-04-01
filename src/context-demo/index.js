@@ -1,34 +1,32 @@
 import React, { Component } from 'react';
 import SimpleClock from './SimpleClock';
 import AnalogClock from './AnalogClock';
+import { TimeProvider, TimeConsumer } from './TimeContext';
 
-const FirstChild = ({ now }) => (
+const FirstChild = () => (
   <div>
-    <SimpleClock time={now} />
+    <TimeConsumer>{({ now }) => <SimpleClock time={now} />}</TimeConsumer>
   </div>
 );
 
-const SecondChild = ({ now }) => (
+const SecondChild = () => (
   <div>
-    <AnalogClock time={now} />
+    <TimeConsumer>{({ now }) => <AnalogClock time={now} />}</TimeConsumer>
   </div>
 );
 
 class ContextDemo extends Component {
-  state = { now: new Date() };
-
-  componentDidMount() {
-    setInterval(() => this.setState({ now: new Date() }), 1000);
-  }
-
   render() {
-    const { now } = this.state;
-
     return (
       <div>
-        <h2>Using Context</h2>
-        <FirstChild now={now} />
-        <SecondChild now={now} />
+        <TimeProvider>
+          <h2>Using Context</h2>
+          <FirstChild />
+          <SecondChild />
+          <TimeConsumer>
+            {({ pause }) => <button onClick={pause}>Pause</button>}
+          </TimeConsumer>
+        </TimeProvider>
       </div>
     );
   }
