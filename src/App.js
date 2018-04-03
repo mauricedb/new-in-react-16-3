@@ -4,7 +4,8 @@ import './App.css';
 // import UsingRefs from './using-refs';
 // import ForwardRef from './forward-ref';
 // import ContextDemo from './context-demo';
-import ComponentLifecycleChanges from './component-lifecycle';
+// import ComponentLifecycleChanges from './component-lifecycle';
+import WithStrictMode from './strict-mode';
 
 class App extends Component {
   render() {
@@ -13,7 +14,8 @@ class App extends Component {
         {/* <UsingRefs /> */}
         {/* <ForwardRef /> */}
         {/* <ContextDemo /> */}
-        <ComponentLifecycleChanges />
+        {/* <ComponentLifecycleChanges /> */}
+        <WithStrictMode />
       </div>
     );
   }
